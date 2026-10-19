@@ -1,0 +1,40 @@
+{
+  "orders": [
+    {
+      "order_id": "ORD-14683",
+      "store_id": "fashion_boutique",
+      "store_name": "Aura Fashion BD",
+      "timestamp": "2026-10-19 06:58:03 PM",
+      "customer_name": "জুবায়ের",
+      "phone": "01712345678",
+      "address": "আমি কটন কাবলি সেট নেভি ব্লু L সাইজ নিব। আমার  , : , : বাড়ি ১২, রোড ৫, ধানমন্ডি, ঢাকা।",
+      "items": "প্রিমিয়াম কটন কাবলি সেট (রয়্যাল নেভি ব্লু)",
+      "total_amount": 1310,
+      "status": "✅ কনফার্মড (অটোমেটেড)"
+    },
+    {
+      "order_id": "ORD-23729",
+      "store_id": "fashion_boutique",
+      "store_name": "Aura Fashion BD",
+      "timestamp": "2026-10-17 01:55:29 PM",
+      "customer_name": "Jubayer",
+      "phone": "01811223344",
+      "address": "amar nam ,  , Mirpur 10, Dhaka",
+      "items": "প্রিমিয়াম কটন কাবলি সেট (রয়্যাল নেভি ব্লু)",
+      "total_amount": 1310,
+      "status": "✅ কনফার্মড (অটোমেটেড)"
+    },
+    {
+      "order_id": "ORD-11728",
+      "store_id": "fashion_boutique",
+      "store_name": "Aura Fashion BD",
+      "timestamp": "2026-10-17 10:35:28 AM",
+      "customer_name": "সম্মানিত ক্রেতা",
+      "phone": "01712345678",
+      "address": "আমি কটন কাবলি সেট নেভি ব্লু L সাইজ নিব। আমার  জুবায়ের, : , : বাড়ি ১২, রোড ৫, ধানমন্ডি, ঢাকা।",
+      "items": "প্রিমিয়াম কটন কাবলি সেট (রয়্যাল নেভি ব্লু)",
+      "total_amount": 1310,
+      "status": "✅ কনফার্মড (অটোমেটেড)"
+    }
+  ]
+}

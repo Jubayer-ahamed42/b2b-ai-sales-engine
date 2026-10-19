@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B AI Sales Agent — Client Demo Sandbox (Be Smart With AI)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-glow: rgba(79, 70, 229, 0.25);
+      --bg-dark: #090d16;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --success: #10b981;
+      --whatsapp: #25d366;
+      --accent: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .brand-title h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title p {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .store-select-wrap {
+      display: flex;
+      align-items: center;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 4px 10px;
+      gap: 8px;
+    }
+
+    .store-select-wrap select {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-pitch {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-pitch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-add {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+    }
+
+    .btn-add:hover {
+      background: #334155;
+      color: #fff;
+    }
+
+    /* Main Container Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 24px;
+      padding: 24px;
+      max-width: 1500px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Phone Mockup */
+    .phone-column {
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-mockup {
+      width: 100%;
+      max-width: 440px;
+      height: 780px;
+      background: #000;
+      border-radius: 44px;
+      padding: 12px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(79, 70, 229, 0.2);
+      border: 3px solid #334155;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .phone-screen {
+      background: #0b141a;
+      border-radius: 34px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Smartphone Top Island */
+    .phone-island {
+      height: 24px;
+      background: #000;
+      width: 120px;
+      margin: 0 auto;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      z-index: 20;
+    }
+
+    /* Chat Header */
+    .chat-header {
+      background: #1f2c34;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 10;
+    }
+
+    .chat-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      position: relative;
+    }
+
+    .online-dot {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      width: 11px;
+      height: 11px;
+      background: #22c55e;
+      border-radius: 50%;
+      border: 2px solid #1f2c34;
+    }
+
+    .chat-header-info {
+      flex: 1;
+    }
+
+    .chat-header-info h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #e9edef;
+      line-height: 1.2;
+    }
+
+    .chat-header-info p {
+      font-size: 11px;
+      color: #8696a0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .verified-pill {
+      background: rgba(14, 165, 233, 0.2);
+      color: #38bdf8;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    /* Quick Prompts Carousel */
+    .quick-prompts {
+      background: #111b21;
+      padding: 8px 12px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      scrollbar-width: none;
+    }
+
+    .quick-pill {
+      background: #202c33;
+      color: #aebac1;
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.2s;
+    }
+
+    .quick-pill:hover {
+      background: #00a884;
+      color: #fff;
+    }
+
+    /* Messages Area */
+    .messages-container {
+      flex: 1;
+      padding: 16px 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #0b141a;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    .msg {
+      max-width: 82%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      position: relative;
+      word-break: break-word;
+    }
+
+    .msg-bot {
+      background: #202c33;
+      color: #e9edef;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .msg-user {
+      background: #005c4b;
+      color: #e9edef;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg-time {
+      font-size: 10px;
+      color: #8696a0;
+      float: right;
+      margin-left: 8px;
+      margin-top: 4px;
+    }
+
+    /* Product Card Inside Chat */
+    .chat-product-card {
+      background: #182229;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .chat-product-card h4 {
+      font-size: 13px;
+      color: #38bdf8;
+      margin-bottom: 4px;
+    }
+
+    .chat-product-card .price {
+      font-size: 15px;
+      font-weight: 700;
+      color: #22c55e;
+    }
+
+    /* Typing Indicator */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 14px;
+      background: #202c33;
+      border-radius: 14px;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #8696a0;
+      border-radius: 50%;
+      animation: typing 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Chat Input Bar */
+    .chat-input-bar {
+      background: #202c33;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .chat-input-bar input {
+      flex: 1;
+      background: #2a3942;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 16px;
+      color: #fff;
+      font-size: 13.5px;
+      outline: none;
+    }
+
+    .btn-send {
+      background: #00a884;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .btn-send:hover {
+      transform: scale(1.05);
+      background: #06cf9c;
+    }
+
+    /* Right Column: CRM & Orders Dashboard */
+    .dashboard-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .metric-card span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .metric-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .metric-card .badge {
+      font-size: 11px;
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    /* Orders Table Card */
+    .card-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .panel-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      flex: 1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      text-align: left;
+      padding: 12px 14px;
+      background: #1f2937;
+      color: var(--text-muted);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #e5e7eb;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .order-status {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+    }
+
+    /* Pitch Helper Card */
+    .pitch-helper {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(14, 165, 233, 0.15));
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .pitch-text h3 {
+      font-size: 15px;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .pitch-text p {
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Modal Backdrop & Container */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 16px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(79, 70, 229, 0.25);
+      animation: modalFadeIn 0.2s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-close {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.15s;
+    }
+    .btn-close:hover { color: #fff; }
+
+    .modal-body {
+      padding: 22px 24px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: #6366f1;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .product-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid #1f2937;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="brand-wrap">
+      <div class="brand-badge">⚡</div>
+      <div class="brand-title">
+        <h1>Be Smart With AI <span class="verified-pill">Agency Engine</span></h1>
+        <p>B2B AI E-COMMERCE SALES AGENT & CLIENT DEMO SANDBOX</p>
+      </div>
+    </div>
+
+    <div class="nav-controls">
+      <div class="store-select-wrap">
+        <span id="storeAvatar">👔</span>
+        <select id="storeSelect" onchange="onStoreChange()">
+          <!-- Populated dynamically -->
+        </select>
+      </div>
+
+      <button class="btn btn-add" onclick="openAddStoreModal()">
+        ➕ ক্লায়েন্ট শপ / প্রোডাক্ট
+      </button>
+
+      <button class="btn btn-pitch" onclick="copyClientPitchLink()">
+        📋 ডেমো লিংক কপি করুন
+      </button>
+
+      <button class="btn btn-add" onclick="openShareGuideModal()">
+        🎥 ডেমো পাঠানোর গাইড
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Grid -->
+  <main class="main-grid">
+    
+    <!-- Left Column: Smartphone Simulator -->
+    <div class="phone-column">
+      <div class="phone-mockup">
+        <div class="phone-island"></div>
+        <div class="phone-screen">
+          
+          <!-- Chat Header -->
+          <div class="chat-header">
+            <div class="chat-avatar" id="chatAvatar">
+              👔
+              <div class="online-dot"></div>
+            </div>
+            <div class="chat-header-info">
+              <h3 id="chatStoreName">Aura Fashion BD</h3>
+              <p><span>⚡ সাধারণত ১ সেকেন্ডে উত্তর দেয়</span> • <span class="verified-pill">AI Sales Bot</span></p>
+            </div>
+          </div>
+
+          <!-- Quick Prompts Carousel -->
+          <div class="quick-prompts" id="quickPrompts">
+            <div class="quick-pill" onclick="sendQuickMessage('আসসালামু আলাইকুম, আপনাদের কালেকশন দেখতে চাই')">🛍️ কালেকশন দেখতে চাই</div>
+            <div class="quick-pill" onclick="sendQuickMessage('পাঞ্জাবির দাম ও সাইজ কত?')">💰 দাম ও সাইজ কত?</div>
+            <div class="quick-pill" onclick="sendQuickMessage('ডেলিভারি চার্জ কত এবং কতদিন সময় লাগবে?')">🚚 ডেলিভারি চার্জ কত?</div>
+            <div class="quick-pill" onclick="sendQuickMessage('ক্যাশ অন ডেলিভারিতে অর্ডার করতে চাই')">📦 অর্ডার করতে চাই</div>
+          </div>
+
+          <!-- Messages Scrollable Container -->
+          <div class="messages-container" id="messagesContainer">
+            <!-- Messages rendered dynamically -->
+          </div>
+
+          <!-- Typing Indicator (Hidden by default) -->
+          <div id="typingIndicator" class="typing-indicator" style="display: none; margin-left: 12px;">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+
+          <!-- Chat Input -->
+          <form class="chat-input-bar" onsubmit="handleChatSubmit(event)">
+            <input type="text" id="chatInput" placeholder="এখানে মেসেজ লিখুন..." autocomplete="off">
+            <button type="submit" class="btn-send">➤</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Live CRM & Order Ledger -->
+    <div class="dashboard-column">
+      
+      <!-- Metrics Row -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <span>স্বয়ংক্রিয় অর্ডার ক্যাপচার</span>
+          <h2 id="totalOrdersCount">0</h2>
+          <div class="badge">↑ ১০০% রিয়েল-টাইম কনফার্মড</div>
+        </div>
+        <div class="metric-card">
+          <span>গড় রেসপন্স টাইম</span>
+          <h2>০.৮ সেকেন্ড</h2>
+          <div class="badge">⚡ কোনো কাস্টমার মিস নেই</div>
+        </div>
+        <div class="metric-card">
+          <span>নাইট শিফট সেলস রিকভারি</span>
+          <h2>+৩৫%</h2>
+          <div class="badge">🌙 রাত ২টার সেলস ধরা সম্ভব</div>
+        </div>
+      </div>
+
+      <!-- Pitch Helper Card -->
+      <div class="pitch-helper">
+        <div class="pitch-text">
+          <h3>🎯 ক্লায়েন্টকে ডেমো দেখানোর কৌশল (Pitching Secret)</h3>
+          <p>ক্লায়েন্টকে বলুন: <i>"ভাইয়া, আপনার পেজের ১টি প্রোডাক্ট নিয়ে আমি একটি স্যান্ডবক্স বানিয়েছি। বাঁয়ের ফোনে যে কোনো মেসেজ দিয়ে অর্ডার করে দেখুন—ডানের ড্যাশবোর্ডে কীভাবে সাথে সাথে অর্ডার ডাটা চলে আসে!"</i></p>
+        </div>
+      </div>
+
+      <!-- Live Order Ledger Card -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <h2>📦 লাইভ অর্ডার লেজার (Real-Time CRM Sync)</h2>
+          <span style="font-size: 12px; color: var(--text-muted);">গুগল শিট ও কুরিয়ার API রেডি</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>অর্ডার আইডি</th>
+                <th>সময়</th>
+                <th>দোকানের নাম</th>
+                <th>গ্রাহকের ফোন</th>
+                <th>ঠিকানা</th>
+                <th>পণ্য</th>
+                <th>মোট টাকা</th>
+                <th>স্ট্যাটাস</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td colspan="8" style="text-align: center; color: var(--text-muted); padding: 40px;">
+                  এখনও কোনো অর্ডার রেকর্ড হয়নি। বাঁয়ের চ্যাটে আপনার নাম, ফোন ও ঠিকানা লিখে অর্ডার করুন!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div id="toast" class="toast">লিংক কপি হয়েছে!</div>
+
+  <!-- Modal 1: Add New Client Store & Products -->
+  <div id="addStoreModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🛍️ নতুন ক্লায়েন্ট শপ ও প্রোডাক্ট যোগ করুন</h2>
+        <button class="btn-close" onclick="closeAddStoreModal()">&times;</button>
+      </div>
+      <form id="addStoreForm" onsubmit="handleStoreSubmit(event)" class="modal-body">
+        <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
+          ক্লায়েন্টের ফেসবুক পেইজের নাম ও প্রোডাক্টের তথ্য এখানে দিন। সাথে সাথে ক্লায়েন্টের জন্য একটি পার্সোনালাইজড লাইভ সেলস ডেমো তৈরি হয়ে যাবে!
+        </p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>দোকান / ফেসবুক পেইজের নাম *</label>
+            <input type="text" id="storeNameInput" placeholder="যেমন: Royal Heritage BD" required />
+          </div>
+          <div class="form-group">
+            <label>ক্যাটাগরি *</label>
+            <select id="storeCategoryInput">
+              <option value="Men's Fashion">Men's Fashion & Clothing</option>
+              <option value="Women's Clothing">Women's Clothing & Abaya</option>
+              <option value="Gadgets & Tech">Gadgets & Tech Accessories</option>
+              <option value="Organic & Food">Organic Food & Grocery</option>
+              <option value="Shoes & Footwear">Shoes & Footwear</option>
+              <option value="Custom Store">General E-Commerce</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>স্টোর ট্যাগলাইন / বিবরণ</label>
+            <input type="text" id="storeTaglineInput" placeholder="যেমন: প্রিমিয়াম পাঞ্জাবি ও আভিজাত্যের ছোঁয়া" />
+          </div>
+          <div class="form-group">
+            <label>ব্র্যান্ড আইকন / ইমোজি</label>
+            <select id="storeAvatarInput">
+              <option value="👔">👔 স্যুট / পাঞ্জাবি</option>
+              <option value="👗">👗 মেয়েদের পোশাক</option>
+              <option value="⚡">⚡ গ্যাজেট / টেক</option>
+              <option value="👟">👟 জুতা / স্নিকার্স</option>
+              <option value="🍯">🍯 মধু / অর্গানিক ফুড</option>
+              <option value="💎">💎 জুয়েলারি / ঘড়ি</option>
+              <option value="🛍️">🛍️ ফ্যাশন শপ</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="font-size: 13px; font-weight: 700; color: #38bdf8; margin-top: 6px;">
+          📦 ক্লায়েন্টের প্রোডাক্ট ১ (মূল প্রোডাক্ট):
+        </div>
+        <div class="product-box">
+          <div class="form-row">
+            <div class="form-group">
+              <label>পণ্যের নাম *</label>
+              <input type="text" id="p1Name" placeholder="যেমন: রয়েল এমব্রয়ডারি পাঞ্জাবি" required />
+            </div>
+            <div class="form-group">
+              <label>মূল্য (টাকা) *</label>
+              <input type="number" id="p1Price" placeholder="যেমন: 1150" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>উপলব্ধ সাইজসমূহ</label>
+              <input type="text" id="p1Sizes" placeholder="যেমন: M (38), L (40), XL (42)" value="M, L, XL" />
+            </div>
+            <div class="form-group">
+              <label>কালার অপশন</label>
+              <input type="text" id="p1Colors" placeholder="যেমন: White, Navy Blue" value="Navy Blue, White" />
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 13px; font-weight: 700; color: #a78bfa; margin-top: 6px;">
+          📦 ক্লায়েন্টের প্রোডাক্ট ২ (ঐচ্ছিক):
+        </div>
+        <div class="product-box">
+          <div class="form-row">
+            <div class="form-group">
+              <label>পণ্যের নাম</label>
+              <input type="text" id="p2Name" placeholder="যেমন: সেমি-লং কুর্তি পাঞ্জাবি" />
+            </div>
+            <div class="form-group">
+              <label>মূল্য (টাকা)</label>
+              <input type="number" id="p2Price" placeholder="যেমন: 850" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>সাইজ</label>
+              <input type="text" id="p2Sizes" placeholder="M, L, XL" value="M, L, XL" />
+            </div>
+            <div class="form-group">
+              <label>কালার</label>
+              <input type="text" id="p2Colors" placeholder="Black, Olive" value="Black, Olive" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top: 6px;">
+          <div class="form-group">
+            <label>ঢাকা সিটিতে ডেলিভারি চার্জ (৳)</label>
+            <input type="number" id="delInside" value="60" />
+          </div>
+          <div class="form-group">
+            <label>ঢাকার বাইরে ডেলিভারি চার্জ (৳)</label>
+            <input type="number" id="delOutside" value="120" />
+          </div>
+        </div>
+
+        <div class="modal-footer" style="padding: 16px 0 0 0;">
+          <button type="button" class="btn btn-add" onclick="closeAddStoreModal()">বাতিল</button>
+          <button type="submit" class="btn btn-pitch">🚀 সংরক্ষণ ও লাইভ টেস্ট করুন</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: How to Send Demo to Clients Guide -->
+  <div id="shareGuideModal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 680px;">
+      <div class="modal-header">
+        <h2>🎥 ক্লায়েন্টকে ডেমো পাঠানোর প্রুভেন পদ্ধতি</h2>
+        <button class="btn-close" onclick="closeShareGuideModal()">&times;</button>
+      </div>
+      <div class="modal-body" style="gap: 18px;">
+        
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 14px;">
+          <h3 style="color: #34d399; font-size: 15px; margin-bottom: 6px;">
+            🥇 পদ্ধতি ১ (সর্বোচ্চ রেসপন্স রেট - ৯৫% ক্লায়েন্ট উত্তর দেয়): ২৫ সেকেন্ডের ভিডিও ডেমো
+          </h3>
+          <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+            ১. ওপরের <strong>"➕ ক্লায়েন্ট শপ / প্রোডাক্ট"</strong> বাটনে ক্লিক করে ক্লায়েন্টের ফেসবুক পেইজের নাম ও তাদের পেজের যেকোনো ১-২টি প্রোডাক্ট বসান।<br>
+            ২. আপনার পিসিতে বা ফোনে স্ক্রিন রেকর্ডার অন করুন (Windows এ <code>Win + Alt + R</code> অথবা Snipping Tool)।<br>
+            ৩. চ্যাটে "পাঞ্জাবি" বা "দাম কত" লিখুন — দেখুন কীভাবে ১ সেকেন্ডে তাদের প্রোডাক্টের নিখুঁত বিবরণ ও দাম চলে আসে!<br>
+            ৪. একটি কাল্পনিক ফোন নম্বর লিখে অর্ডার সাবমিট করে দেখান — ডানপাশে সাথে সাথে অর্ডারটি মেমো আকারে রেকর্ড হয়ে যাবে!<br>
+            ৫. এই <strong>২৫ সেকেন্ডের ভিডিও ক্লিপটি</strong> ক্লায়েন্টের পেইজের ইনবক্সে বা হোয়াটসঅ্যাপে পাঠিয়ে দিন।
+          </p>
+        </div>
+
+        <div style="background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 12px; padding: 14px;">
+          <h3 style="color: #38bdf8; font-size: 15px; margin-bottom: 6px;">
+            🌐 পদ্ধতি ২: লাইভ ইন্টারঅ্যাক্টিভ ওয়েব লিংক পাঠানো (ক্লায়েন্ট নিজে চ্যাট করবে)
+          </h3>
+          <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+            আপনি চাইলে ক্লায়েন্টকে সরাসরি তার ফোনে ব্রাউজারে টেস্ট করার মতো একটি পাবলিক লাইভ লিংক দিতে পারেন।<br>
+            টার্মিনালে এই একটি কমান্ড রান করুন:<br>
+            <code style="background: #000; padding: 4px 8px; border-radius: 4px; color: #a78bfa; font-family: monospace;">npx localtunnel --port 5050</code><br>
+            অথবা Cloudflare Tunnel:<br>
+            <code style="background: #000; padding: 4px 8px; border-radius: 4px; color: #a78bfa; font-family: monospace;">cloudflared tunnel --url http://localhost:5050</code><br>
+            এরপর প্রাপ্ত পাবলিক লিংকটি ক্লায়েন্টকে দিলে ক্লায়েন্ট নিজের মোবাইল থেকে লাইভ চ্যাট করে দেখতে পারবে!
+          </p>
+        </div>
+
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h4 style="color: #f59e0b; font-size: 13px;">📩 ভিডিওর সাথে ক্লায়েন্টকে পাঠানোর মেসেজ স্ক্রিপ্ট:</h4>
+            <button class="btn btn-add" style="padding: 4px 10px; font-size: 11px;" onclick="copyOutreachPitch()">📋 স্ক্রিপ্ট কপি করুন</button>
+          </div>
+          <div id="pitchScriptBox" style="font-size: 12px; color: #e2e8f0; background: #0f172a; padding: 10px; border-radius: 8px; line-height: 1.6; white-space: pre-line;">
+            আসসালামু আলাইকুম [ক্লায়েন্টের নাম/দোকানের নাম] টিম!
+            আপনাদের পেইজের প্রোডাক্ট কোয়ালিটি ও কালেকশন অসাধারণ। মাশাআল্লাহ!
+
+            অনলাইনে রাত ১টা বা ছুটির দিনে কাস্টমার মেসেজ দিলে অনেক সময় রিপ্লাই দিতে দেরি হয়ে যায় এবং কাস্টমার অন্য পেজে চলে যায়।
+            তাই আপনাদের [দোকানের নাম]-এর প্রোডাক্ট ক্যাটালগ দিয়ে আমি ২৪/৭ অটোমেটেড এআই সেলস অ্যাসিস্ট্যান্টের একটি ২৫ সেকেন্ডের লাইভ ভিডিও ডেমো বানিয়েছি (সংযুক্ত ভিডিওটি দেখুন)।
+
+            এটি কাস্টমারের সাথে বাংলা/বাংলিশে কথা বলে ১ সেকেন্ডে দাম ও সাইজ জানিয়ে সম্পূর্ণ ক্যাশ অন ডেলিভারি অর্ডার কনফার্ম করে ফেলে।
+
+            আপনারা চাইলে আপনাদের পেজে ৩ দিনের জন্য সম্পূর্ণ ফ্রিতে এটি চালিয়ে দেখতে পারেন। বিস্তারিত দেখতে আগ্রহী হলে একটু জানাবেন কি? ধন্যবাদ!
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-add" onclick="closeShareGuideModal()">ঠিক আছে, বুঝেছি</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentStoreId = "fashion_boutique";
+    let storesData = {};
+    let conversationHistory = [];
+
+    // Initialize Page
+    async function init() {
+      await fetchStores();
+      await fetchOrders();
+      
+      // Check URL param for direct store selection (e.g. ?store=gadget_store)
+      const urlParams = new URLSearchParams(window.location.search);
+      const storeParam = urlParams.get("store");
+      if (storeParam && storesData[storeParam]) {
+        currentStoreId = storeParam;
+        document.getElementById("storeSelect").value = storeParam;
+      }
+      
+      renderStoreView();
+    }
+
+    async function fetchStores() {
+      try {
+        const res = await fetch("/api/stores");
+        const data = await res.json();
+        storesData = data.stores || {};
+        
+        const select = document.getElementById("storeSelect");
+        select.innerHTML = "";
+        for (const [id, s] of Object.entries(storesData)) {
+          const opt = document.createElement("option");
+          opt.value = id;
+          opt.textContent = `${s.avatar} ${s.name} (${s.category})`;
+          select.appendChild(opt);
+        }
+        select.value = currentStoreId;
+      } catch (e) {
+        console.error("Failed to load stores", e);
+      }
+    }
+
+    function onStoreChange() {
+      currentStoreId = document.getElementById("storeSelect").value;
+      renderStoreView();
+    }
+
+    function renderStoreView() {
+      const store = storesData[currentStoreId] || { name: "Store", avatar: "🛍️" };
+      document.getElementById("storeAvatar").textContent = store.avatar;
+      document.getElementById("chatAvatar").innerHTML = `${store.avatar}<div class="online-dot"></div>`;
+      document.getElementById("chatStoreName").textContent = store.name;
+      
+      // Reset chat with welcome message
+      conversationHistory = [];
+      const container = document.getElementById("messagesContainer");
+      container.innerHTML = `
+        <div class="msg msg-bot">
+          আসসালামু আলাইকুম! <strong>${store.name}</strong>-এ আপনাকে স্বাগতম। ✨<br><br>
+          ${store.tagline || 'আমাদের প্রিমিয়াম কালেকশন দেখতে পারেন অথবা যেকোনো পণ্যের দাম ও সাইজ জানতে পারেন।'}<br><br>
+          আজ আপনাকে কীভাবে সাহায্য করতে পারি?
+          <span class="msg-time">এখন</span>
+        </div>
+      `;
+    }
+
+    async function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("chatInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage(text, "user");
+      input.value = "";
+
+      // Show typing indicator
+      const typing = document.getElementById("typingIndicator");
+      typing.style.display = "flex";
+      scrollChatBottom();
+
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            store_id: currentStoreId,
+            message: text,
+            history: conversationHistory
+          })
+        });
+        const data = await res.json();
+        typing.style.display = "none";
+
+        if (data.reply) {
+          appendMessage(data.reply, "bot");
+          conversationHistory.push({ sender: "user", text: text });
+          conversationHistory.push({ sender: "model", text: data.reply });
+        }
+
+        if (data.has_order) {
+          showToast("🎉 নতুন অর্ডার রেকর্ড হয়েছে!");
+          await fetchOrders();
+        }
+      } catch (err) {
+        typing.style.display = "none";
+        appendMessage("দুঃখিত, সংযোগে কিছুটা সমস্যা হচ্ছে। অনুগ্রহ করে আবার চেষ্টা করুন।", "bot");
+      }
+    }
+
+    function sendQuickMessage(text) {
+      document.getElementById("chatInput").value = text;
+      handleChatSubmit(new Event("submit"));
+    }
+
+    function appendMessage(text, sender) {
+      const container = document.getElementById("messagesContainer");
+      const msgDiv = document.createElement("div");
+      msgDiv.className = `msg msg-${sender}`;
+      
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      
+      // Format line breaks
+      msgDiv.innerHTML = text.replace(/\n/g, "<br>") + `<span class="msg-time">${timeStr}</span>`;
+      container.appendChild(msgDiv);
+      scrollChatBottom();
+    }
+
+    function scrollChatBottom() {
+      const container = document.getElementById("messagesContainer");
+      container.scrollTop = container.scrollHeight;
+    }
+
+    async function fetchOrders() {
+      try {
+        const res = await fetch("/api/orders");
+        const data = await res.json();
+        const orders = data.orders || [];
+        
+        document.getElementById("totalOrdersCount").textContent = orders.length;
+        const tbody = document.getElementById("ordersTableBody");
+
+        if (orders.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted); padding: 40px;">এখনও কোনো অর্ডার রেকর্ড হয়নি। বাঁয়ের চ্যাটে অর্ডার করুন!</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = "";
+        orders.forEach(o => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><code>#${o.order_id}</code></td>
+            <td style="font-size: 11px;">${o.timestamp}</td>
+            <td><strong>${o.store_name}</strong></td>
+            <td><span style="color: #38bdf8; font-weight: 600;">${o.phone}</span></td>
+            <td style="max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${o.address}">${o.address}</td>
+            <td>${o.items}</td>
+            <td><strong>${o.total_amount}৳</strong></td>
+            <td><span class="order-status">${o.status}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (e) {
+        console.error("Failed to load orders", e);
+      }
+    }
+
+    function copyClientPitchLink() {
+      const currentUrl = window.location.origin + window.location.pathname + `?store=${currentStoreId}`;
+      navigator.clipboard.writeText(currentUrl);
+      showToast("📋 ক্লায়েন্ট ডেমো লিংক কপি করা হয়েছে!");
+    }
+
+    function openAddStoreModal() {
+      document.getElementById("addStoreModal").classList.add("active");
+    }
+
+    function closeAddStoreModal() {
+      document.getElementById("addStoreModal").classList.remove("active");
+    }
+
+    function openShareGuideModal() {
+      document.getElementById("shareGuideModal").classList.add("active");
+    }
+
+    function closeShareGuideModal() {
+      document.getElementById("shareGuideModal").classList.remove("active");
+    }
+
+    function copyOutreachPitch() {
+      const text = document.getElementById("pitchScriptBox").innerText;
+      navigator.clipboard.writeText(text);
+      showToast("📋 আউটরিচ স্ক্রিপ্ট কপি করা হয়েছে!");
+    }
+
+    async function handleStoreSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("storeNameInput").value.trim();
+      const category = document.getElementById("storeCategoryInput").value;
+      const tagline = document.getElementById("storeTaglineInput").value.trim();
+      const avatar = document.getElementById("storeAvatarInput").value;
+      const insideDhaka = parseInt(document.getElementById("delInside").value) || 60;
+      const outsideDhaka = parseInt(document.getElementById("delOutside").value) || 120;
+
+      const p1Name = document.getElementById("p1Name").value.trim();
+      const p1Price = parseInt(document.getElementById("p1Price").value) || 950;
+      const p1Sizes = document.getElementById("p1Sizes").value.split(",").map(s => s.trim()).filter(Boolean);
+      const p1Colors = document.getElementById("p1Colors").value.split(",").map(c => c.trim()).filter(Boolean);
+
+      const products = [
+        {
+          id: "p1",
+          name: p1Name,
+          price: p1Price,
+          sizes: p1Sizes.length ? p1Sizes : ["M", "L", "XL"],
+          colors: p1Colors.length ? p1Colors : ["Navy Blue", "Black"],
+          badge: "হট কালেকশন 🔥"
+        }
+      ];
+
+      const p2Name = document.getElementById("p2Name").value.trim();
+      if (p2Name) {
+        const p2Price = parseInt(document.getElementById("p2Price").value) || 850;
+        const p2Sizes = document.getElementById("p2Sizes").value.split(",").map(s => s.trim()).filter(Boolean);
+        const p2Colors = document.getElementById("p2Colors").value.split(",").map(c => c.trim()).filter(Boolean);
+        products.push({
+          id: "p2",
+          name: p2Name,
+          price: p2Price,
+          sizes: p2Sizes.length ? p2Sizes : ["M", "L", "XL"],
+          colors: p2Colors.length ? p2Colors : ["Black", "White"],
+          badge: "নতুন পণ্য ✨"
+        });
+      }
+
+      const storeId = name.toLowerCase().replace(/[^a-z0-9]/g, "_").slice(0, 24);
+
+      const payload = {
+        id: storeId,
+        name: name,
+        category: category,
+        tagline: tagline || "সেরা কোয়ালিটি ও দ্রুত হোম ডেলিভারি",
+        avatar: avatar,
+        brand_color: "#4f46e5",
+        currency: "৳",
+        delivery: {
+          inside_dhaka: insideDhaka,
+          outside_dhaka: outsideDhaka,
+          policy: "ক্যাশ অন ডেলিভারি (পণ্য হাতে পেয়ে মূল্য পরিশোধের সুবিধা)।"
+        },
+        products: products,
+        faqs: {
+          "পেমেন্ট": "ক্যাশ অন ডেলিভারি সুবিধা আছে।"
+        }
+      };
+
+      try {
+        const res = await fetch("/api/stores/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+        if (result.success) {
+          closeAddStoreModal();
+          showToast(`🎉 "${name}" সফলভাবে যুক্ত হয়েছে!`);
+          currentStoreId = result.store_id;
+          await fetchStores();
+          renderStoreView();
+        }
+      } catch (err) {
+        alert("শপ যোগ করতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
+      }
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById("toast");
+      toast.textContent = text;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3000);
+    }
+
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
