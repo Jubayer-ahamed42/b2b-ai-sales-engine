@@ -26,7 +26,6 @@ def resolve_gemini_api_key() -> str:
 
     potential_env_paths = [
         BASE_DIR / ".env",
-        Path("C:/MY PROJECT/2. FACEBOOK AUTO POSTER AGENT (Be Smart With AI)/.env"),
         Path.home() / ".gemini" / ".env"
     ]
     for p in potential_env_paths:
@@ -162,7 +161,7 @@ class AISalesBrain:
         }
 
         # Fast candidate model with short timeout for responsive live sandbox
-        candidate_models = ["gemini-flash-latest"]
+        candidate_models = ["gemini-flash-lite-latest", "gemini-flash-latest"]
         for model in candidate_models:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.api_key}"
             try:
@@ -172,7 +171,7 @@ class AISalesBrain:
                     headers={"Content-Type": "application/json"},
                     method="POST"
                 )
-                with urllib.request.urlopen(req, timeout=3.5) as response:
+                with urllib.request.urlopen(req, timeout=8.0) as response:
                     if response.status == 200:
                         res_data = json.loads(response.read().decode("utf-8"))
                         candidates = res_data.get("candidates", [])
