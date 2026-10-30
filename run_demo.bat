@@ -2,7 +2,8 @@
 setlocal
 title B2B AI Sales Agent Client Demo Sandbox
 
-set "PROJECT_DIR=C:\MY PROJECT\12. B2B AI SALES ENGINE & CLIENT DEMO SANDBOX"
+set "PROJECT_DIR=%~dp0"
+if "%PROJECT_DIR:~-1%"=="\" set "PROJECT_DIR=%PROJECT_DIR:~0,-1%"
 cd /d "%PROJECT_DIR%"
 
 echo ============================================================

@@ -54,32 +54,39 @@ def test_sales_brain_inquiry():
 
 def test_sales_brain_order_capture():
     print("🧪 [Test 3] Testing Automatic COD Order Capture & Ledger...")
-    brain = AISalesBrain()
-    cm = CatalogManager()
-    store = cm.get_store("fashion_boutique")
+    orders_path = BASE_DIR / "orders" / "orders.json"
+    initial_orders_data = orders_path.read_text(encoding="utf-8") if orders_path.exists() else None
 
-    # Simulate customer giving details
-    order_message = "আমি কটন কাবলি সেট নেভি ব্লু L সাইজ নিব। আমার নাম জুবায়ের, ফোন: 01712345678, ঠিকানা: বাড়ি ১২, রোড ৫, ধানমন্ডি, ঢাকা।"
-    res = brain.process_message(
-        store=store,
-        user_message=order_message,
-        history=[
-            {"sender": "user", "text": "দাম কত?"},
-            {"sender": "model", "text": "পাঞ্জাবির দাম ১২৫০ টাকা। অর্ডার করতে আপনার নাম, ফোন ও ঠিকানা দিন।"}
-        ]
-    )
-    assert res.get("reply"), "Empty reply on order submission!"
-    assert res.get("has_order") is True, "Failed to capture order!"
-    
-    order = res.get("order")
-    assert order, "Order object missing!"
-    assert "01712345678" in str(order.get("phone")), f"Phone mismatch: {order.get('phone')}"
-    
-    print(f"  [OK] Order successfully captured: #{order.get('order_id')}")
-    print(f"  [OK] Customer: {order.get('customer_name')} | Phone: {order.get('phone')}")
-    print(f"  [OK] Address: {order.get('address')}")
-    print(f"  [OK] Total: {order.get('total_amount')}৳")
-    print(f"  [OK] Order Ledger updated in orders/orders.json!\n")
+    try:
+        brain = AISalesBrain()
+        cm = CatalogManager()
+        store = cm.get_store("fashion_boutique")
+
+        # Simulate customer giving details
+        order_message = "আমি কটন কাবলি সেট নেভি ব্লু L সাইজ নিব। আমার নাম জুবায়ের, ফোন: 01712345678, ঠিকানা: বাড়ি ১২, রোড ৫, ধানমন্ডি, ঢাকা।"
+        res = brain.process_message(
+            store=store,
+            user_message=order_message,
+            history=[
+                {"sender": "user", "text": "দাম কত?"},
+                {"sender": "model", "text": "পাঞ্জাবির দাম ১২৫০ টাকা। অর্ডার করতে আপনার নাম, ফোন ও ঠিকানা দিন।"}
+            ]
+        )
+        assert res.get("reply"), "Empty reply on order submission!"
+        assert res.get("has_order") is True, "Failed to capture order!"
+        
+        order = res.get("order")
+        assert order, "Order object missing!"
+        assert "01712345678" in str(order.get("phone")), f"Phone mismatch: {order.get('phone')}"
+        
+        print(f"  [OK] Order successfully captured: #{order.get('order_id')}")
+        print(f"  [OK] Customer: {order.get('customer_name')} | Phone: {order.get('phone')}")
+        print(f"  [OK] Address: {order.get('address')}")
+        print(f"  [OK] Total: {order.get('total_amount')}৳")
+        print(f"  [OK] Order Ledger updated in orders/orders.json!\n")
+    finally:
+        if initial_orders_data is not None:
+            orders_path.write_text(initial_orders_data, encoding="utf-8")
 
 def main():
     print("=" * 60)

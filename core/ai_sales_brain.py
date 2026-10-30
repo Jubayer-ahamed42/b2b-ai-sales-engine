@@ -32,8 +32,10 @@ def resolve_gemini_api_key() -> str:
         if p.exists():
             try:
                 for line in p.read_text(encoding="utf-8").splitlines():
+                    line = line.strip()
                     if line.startswith("GEMINI_API_KEY="):
-                        return line.split("=", 1)[1].strip()
+                        val = line.split("=", 1)[1].strip()
+                        return val.strip('"').strip("'")
             except Exception:
                 pass
     return ""
