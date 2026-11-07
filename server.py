@@ -129,20 +129,20 @@ def run_server(port: int = 5050):
 
     url = f"http://127.0.0.1:{port}"
     print("=" * 65)
-    print("🚀 B2B AI SALES ENGINE & CLIENT DEMO SANDBOX LIVE!")
+    print("[Launch] B2B AI SALES ENGINE & CLIENT DEMO SANDBOX LIVE!")
     print("=" * 65)
-    print(f"🔗 Sandbox UI URL : {url}")
-    print("⚡ Powered by   : Google Gemini + Multi-Tenant Core Architecture")
-    print("📱 Client Demos  : Fashion, Gadget, Organic Food & Custom Shops")
-    print("📦 Order Ledger  : Real-Time Synced in orders/orders.json")
+    print(f"[Link] Sandbox UI URL : {url}")
+    print("[Fast] Powered by : Google Gemini + Multi-Tenant Core Architecture")
+    print("[Mobile] Client Demos : Fashion, Gadget, Organic Food & Custom Shops")
+    print("[Package] Order Ledger : Real-Time Synced in orders/orders.json")
     print("=" * 65)
-    print("👉 Press Ctrl+C in terminal to stop.")
+    print("-> Press Ctrl+C in terminal to stop.")
     print("=" * 65)
 
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\n🛑 Server stopped.")
+        print("\n Server stopped.")
         httpd.server_close()
 
 

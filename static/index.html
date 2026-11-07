@@ -711,7 +711,7 @@
   <!-- Top Navigation -->
   <header class="top-nav">
     <div class="brand-wrap">
-      <div class="brand-badge">⚡</div>
+      <div class="brand-badge"></div>
       <div class="brand-title">
         <h1>Be Smart With AI <span class="verified-pill">Agency Engine</span></h1>
         <p>B2B AI E-COMMERCE SALES AGENT & CLIENT DEMO SANDBOX</p>
@@ -720,22 +720,22 @@
 
     <div class="nav-controls">
       <div class="store-select-wrap">
-        <span id="storeAvatar">👔</span>
+        <span id="storeAvatar"></span>
         <select id="storeSelect" onchange="onStoreChange()">
           <!-- Populated dynamically -->
         </select>
       </div>
 
       <button class="btn btn-add" onclick="openAddStoreModal()">
-        ➕ ক্লায়েন্ট শপ / প্রোডাক্ট
+         ক্লায়েন্ট শপ / প্রোডাক্ট
       </button>
 
       <button class="btn btn-pitch" onclick="copyClientPitchLink()">
-        📋 ডেমো লিংক কপি করুন
+        [List] ডেমো লিংক কপি করুন
       </button>
 
       <button class="btn btn-add" onclick="openShareGuideModal()">
-        🎥 ডেমো পাঠানোর গাইড
+        [Video] ডেমো পাঠানোর গাইড
       </button>
     </div>
   </header>
@@ -752,21 +752,21 @@
           <!-- Chat Header -->
           <div class="chat-header">
             <div class="chat-avatar" id="chatAvatar">
-              👔
+              
               <div class="online-dot"></div>
             </div>
             <div class="chat-header-info">
               <h3 id="chatStoreName">Aura Fashion BD</h3>
-              <p><span>⚡ সাধারণত ১ সেকেন্ডে উত্তর দেয়</span> • <span class="verified-pill">AI Sales Bot</span></p>
+              <p><span>সাধারণত ১ সেকেন্ডে উত্তর দেয়</span> • <span class="verified-pill">AI Sales Bot</span></p>
             </div>
           </div>
 
           <!-- Quick Prompts Carousel -->
           <div class="quick-prompts" id="quickPrompts">
-            <div class="quick-pill" onclick="sendQuickMessage('আসসালামু আলাইকুম, আপনাদের কালেকশন দেখতে চাই')">🛍️ কালেকশন দেখতে চাই</div>
-            <div class="quick-pill" onclick="sendQuickMessage('পাঞ্জাবির দাম ও সাইজ কত?')">💰 দাম ও সাইজ কত?</div>
-            <div class="quick-pill" onclick="sendQuickMessage('ডেলিভারি চার্জ কত এবং কতদিন সময় লাগবে?')">🚚 ডেলিভারি চার্জ কত?</div>
-            <div class="quick-pill" onclick="sendQuickMessage('ক্যাশ অন ডেলিভারিতে অর্ডার করতে চাই')">📦 অর্ডার করতে চাই</div>
+            <div class="quick-pill" onclick="sendQuickMessage('আসসালামু আলাইকুম, আপনাদের কালেকশন দেখতে চাই')">️ কালেকশন দেখতে চাই</div>
+            <div class="quick-pill" onclick="sendQuickMessage('পাঞ্জাবির দাম ও সাইজ কত?')">দাম ও সাইজ কত?</div>
+            <div class="quick-pill" onclick="sendQuickMessage('ডেলিভারি চার্জ কত এবং কতদিন সময় লাগবে?')">ডেলিভারি চার্জ কত?</div>
+            <div class="quick-pill" onclick="sendQuickMessage('ক্যাশ অন ডেলিভারিতে অর্ডার করতে চাই')">অর্ডার করতে চাই</div>
           </div>
 
           <!-- Messages Scrollable Container -->
@@ -784,7 +784,7 @@
           <!-- Chat Input -->
           <form class="chat-input-bar" onsubmit="handleChatSubmit(event)">
             <input type="text" id="chatInput" placeholder="এখানে মেসেজ লিখুন..." autocomplete="off">
-            <button type="submit" class="btn-send">➤</button>
+            <button type="submit" class="btn-send">-></button>
           </form>
 
         </div>
@@ -804,19 +804,19 @@
         <div class="metric-card">
           <span>গড় রেসপন্স টাইম</span>
           <h2>০.৮ সেকেন্ড</h2>
-          <div class="badge">⚡ কোনো কাস্টমার মিস নেই</div>
+          <div class="badge">কোনো কাস্টমার মিস নেই</div>
         </div>
         <div class="metric-card">
           <span>নাইট শিফট সেলস রিকভারি</span>
           <h2>+৩৫%</h2>
-          <div class="badge">🌙 রাত ২টার সেলস ধরা সম্ভব</div>
+          <div class="badge">রাত ২টার সেলস ধরা সম্ভব</div>
         </div>
       </div>
 
       <!-- Pitch Helper Card -->
       <div class="pitch-helper">
         <div class="pitch-text">
-          <h3>🎯 ক্লায়েন্টকে ডেমো দেখানোর কৌশল (Pitching Secret)</h3>
+          <h3>ক্লায়েন্টকে ডেমো দেখানোর কৌশল (Pitching Secret)</h3>
           <p>ক্লায়েন্টকে বলুন: <i>"ভাইয়া, আপনার পেজের ১টি প্রোডাক্ট নিয়ে আমি একটি স্যান্ডবক্স বানিয়েছি। বাঁয়ের ফোনে যে কোনো মেসেজ দিয়ে অর্ডার করে দেখুন—ডানের ড্যাশবোর্ডে কীভাবে সাথে সাথে অর্ডার ডাটা চলে আসে!"</i></p>
         </div>
       </div>
@@ -824,7 +824,7 @@
       <!-- Live Order Ledger Card -->
       <div class="card-panel">
         <div class="panel-header">
-          <h2>📦 লাইভ অর্ডার লেজার (Real-Time CRM Sync)</h2>
+          <h2>লাইভ অর্ডার লেজার (Real-Time CRM Sync)</h2>
           <span style="font-size: 12px; color: var(--text-muted);">গুগল শিট ও কুরিয়ার API রেডি</span>
         </div>
 
@@ -863,7 +863,7 @@
   <div id="addStoreModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>🛍️ নতুন ক্লায়েন্ট শপ ও প্রোডাক্ট যোগ করুন</h2>
+        <h2>️ নতুন ক্লায়েন্ট শপ ও প্রোডাক্ট যোগ করুন</h2>
         <button class="btn-close" onclick="closeAddStoreModal()">&times;</button>
       </div>
       <form id="addStoreForm" onsubmit="handleStoreSubmit(event)" class="modal-body">
@@ -897,19 +897,19 @@
           <div class="form-group">
             <label>ব্র্যান্ড আইকন / ইমোজি</label>
             <select id="storeAvatarInput">
-              <option value="👔">👔 স্যুট / পাঞ্জাবি</option>
-              <option value="👗">👗 মেয়েদের পোশাক</option>
-              <option value="⚡">⚡ গ্যাজেট / টেক</option>
-              <option value="👟">👟 জুতা / স্নিকার্স</option>
-              <option value="🍯">🍯 মধু / অর্গানিক ফুড</option>
-              <option value="💎">💎 জুয়েলারি / ঘড়ি</option>
-              <option value="🛍️">🛍️ ফ্যাশন শপ</option>
+              <option value=""> স্যুট / পাঞ্জাবি</option>
+              <option value=""> মেয়েদের পোশাক</option>
+              <option value="[Fast]">[Fast] গ্যাজেট / টেক</option>
+              <option value=""> জুতা / স্নিকার্স</option>
+              <option value=""> মধু / অর্গানিক ফুড</option>
+              <option value="[Pro]">[Pro] জুয়েলারি / ঘড়ি</option>
+              <option value="[Shop]">[Shop] ফ্যাশন শপ</option>
             </select>
           </div>
         </div>
 
         <div style="font-size: 13px; font-weight: 700; color: #38bdf8; margin-top: 6px;">
-          📦 ক্লায়েন্টের প্রোডাক্ট ১ (মূল প্রোডাক্ট):
+          [Package] ক্লায়েন্টের প্রোডাক্ট ১ (মূল প্রোডাক্ট):
         </div>
         <div class="product-box">
           <div class="form-row">
@@ -935,7 +935,7 @@
         </div>
 
         <div style="font-size: 13px; font-weight: 700; color: #a78bfa; margin-top: 6px;">
-          📦 ক্লায়েন্টের প্রোডাক্ট ২ (ঐচ্ছিক):
+          [Package] ক্লায়েন্টের প্রোডাক্ট ২ (ঐচ্ছিক):
         </div>
         <div class="product-box">
           <div class="form-row">
@@ -973,7 +973,7 @@
 
         <div class="modal-footer" style="padding: 16px 0 0 0;">
           <button type="button" class="btn btn-add" onclick="closeAddStoreModal()">বাতিল</button>
-          <button type="submit" class="btn btn-pitch">🚀 সংরক্ষণ ও লাইভ টেস্ট করুন</button>
+          <button type="submit" class="btn btn-pitch">[Launch] সংরক্ষণ ও লাইভ টেস্ট করুন</button>
         </div>
       </form>
     </div>
@@ -983,17 +983,17 @@
   <div id="shareGuideModal" class="modal-overlay">
     <div class="modal-content" style="max-width: 680px;">
       <div class="modal-header">
-        <h2>🎥 ক্লায়েন্টকে ডেমো পাঠানোর প্রুভেন পদ্ধতি</h2>
+        <h2>ক্লায়েন্টকে ডেমো পাঠানোর প্রুভেন পদ্ধতি</h2>
         <button class="btn-close" onclick="closeShareGuideModal()">&times;</button>
       </div>
       <div class="modal-body" style="gap: 18px;">
         
         <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 14px;">
           <h3 style="color: #34d399; font-size: 15px; margin-bottom: 6px;">
-            🥇 পদ্ধতি ১ (সর্বোচ্চ রেসপন্স রেট - ৯৫% ক্লায়েন্ট উত্তর দেয়): ২৫ সেকেন্ডের ভিডিও ডেমো
+             পদ্ধতি ১ (সর্বোচ্চ রেসপন্স রেট - ৯৫% ক্লায়েন্ট উত্তর দেয়): ২৫ সেকেন্ডের ভিডিও ডেমো
           </h3>
           <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
-            ১. ওপরের <strong>"➕ ক্লায়েন্ট শপ / প্রোডাক্ট"</strong> বাটনে ক্লিক করে ক্লায়েন্টের ফেসবুক পেইজের নাম ও তাদের পেজের যেকোনো ১-২টি প্রোডাক্ট বসান।<br>
+            ১. ওপরের <strong>" ক্লায়েন্ট শপ / প্রোডাক্ট"</strong> বাটনে ক্লিক করে ক্লায়েন্টের ফেসবুক পেইজের নাম ও তাদের পেজের যেকোনো ১-২টি প্রোডাক্ট বসান।<br>
             ২. আপনার পিসিতে বা ফোনে স্ক্রিন রেকর্ডার অন করুন (Windows এ <code>Win + Alt + R</code> অথবা Snipping Tool)।<br>
             ৩. চ্যাটে "পাঞ্জাবি" বা "দাম কত" লিখুন — দেখুন কীভাবে ১ সেকেন্ডে তাদের প্রোডাক্টের নিখুঁত বিবরণ ও দাম চলে আসে!<br>
             ৪. একটি কাল্পনিক ফোন নম্বর লিখে অর্ডার সাবমিট করে দেখান — ডানপাশে সাথে সাথে অর্ডারটি মেমো আকারে রেকর্ড হয়ে যাবে!<br>
@@ -1003,7 +1003,7 @@
 
         <div style="background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 12px; padding: 14px;">
           <h3 style="color: #38bdf8; font-size: 15px; margin-bottom: 6px;">
-            🌐 পদ্ধতি ২: লাইভ ইন্টারঅ্যাক্টিভ ওয়েব লিংক পাঠানো (ক্লায়েন্ট নিজে চ্যাট করবে)
+            [Web] পদ্ধতি ২: লাইভ ইন্টারঅ্যাক্টিভ ওয়েব লিংক পাঠানো (ক্লায়েন্ট নিজে চ্যাট করবে)
           </h3>
           <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
             আপনি চাইলে ক্লায়েন্টকে সরাসরি তার ফোনে ব্রাউজারে টেস্ট করার মতো একটি পাবলিক লাইভ লিংক দিতে পারেন।<br>
@@ -1017,8 +1017,8 @@
 
         <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 14px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <h4 style="color: #f59e0b; font-size: 13px;">📩 ভিডিওর সাথে ক্লায়েন্টকে পাঠানোর মেসেজ স্ক্রিপ্ট:</h4>
-            <button class="btn btn-add" style="padding: 4px 10px; font-size: 11px;" onclick="copyOutreachPitch()">📋 স্ক্রিপ্ট কপি করুন</button>
+            <h4 style="color: #f59e0b; font-size: 13px;">ভিডিওর সাথে ক্লায়েন্টকে পাঠানোর মেসেজ স্ক্রিপ্ট:</h4>
+            <button class="btn btn-add" style="padding: 4px 10px; font-size: 11px;" onclick="copyOutreachPitch()">[List] স্ক্রিপ্ট কপি করুন</button>
           </div>
           <div id="pitchScriptBox" style="font-size: 12px; color: #e2e8f0; background: #0f172a; padding: 10px; border-radius: 8px; line-height: 1.6; white-space: pre-line;">
             আসসালামু আলাইকুম [ক্লায়েন্টের নাম/দোকানের নাম] টিম!
@@ -1087,7 +1087,7 @@
     }
 
     function renderStoreView() {
-      const store = storesData[currentStoreId] || { name: "Store", avatar: "🛍️" };
+      const store = storesData[currentStoreId] || { name: "Store", avatar: "[Shop]" };
       document.getElementById("storeAvatar").textContent = store.avatar;
       document.getElementById("chatAvatar").innerHTML = `${store.avatar}<div class="online-dot"></div>`;
       document.getElementById("chatStoreName").textContent = store.name;
@@ -1097,7 +1097,7 @@
       const container = document.getElementById("messagesContainer");
       container.innerHTML = `
         <div class="msg msg-bot">
-          আসসালামু আলাইকুম! <strong>${store.name}</strong>-এ আপনাকে স্বাগতম। ✨<br><br>
+          আসসালামু আলাইকুম! <strong>${store.name}</strong>-এ আপনাকে স্বাগতম। <br><br>
           ${store.tagline || 'আমাদের প্রিমিয়াম কালেকশন দেখতে পারেন অথবা যেকোনো পণ্যের দাম ও সাইজ জানতে পারেন।'}<br><br>
           আজ আপনাকে কীভাবে সাহায্য করতে পারি?
           <span class="msg-time">এখন</span>
@@ -1139,7 +1139,7 @@
         }
 
         if (data.has_order) {
-          showToast("🎉 নতুন অর্ডার রেকর্ড হয়েছে!");
+          showToast(" নতুন অর্ডার রেকর্ড হয়েছে!");
           await fetchOrders();
         }
       } catch (err) {
@@ -1209,7 +1209,7 @@
     function copyClientPitchLink() {
       const currentUrl = window.location.origin + window.location.pathname + `?store=${currentStoreId}`;
       navigator.clipboard.writeText(currentUrl);
-      showToast("📋 ক্লায়েন্ট ডেমো লিংক কপি করা হয়েছে!");
+      showToast("[List] ক্লায়েন্ট ডেমো লিংক কপি করা হয়েছে!");
     }
 
     function openAddStoreModal() {
@@ -1231,7 +1231,7 @@
     function copyOutreachPitch() {
       const text = document.getElementById("pitchScriptBox").innerText;
       navigator.clipboard.writeText(text);
-      showToast("📋 আউটরিচ স্ক্রিপ্ট কপি করা হয়েছে!");
+      showToast("[List] আউটরিচ স্ক্রিপ্ট কপি করা হয়েছে!");
     }
 
     async function handleStoreSubmit(e) {
@@ -1255,7 +1255,7 @@
           price: p1Price,
           sizes: p1Sizes.length ? p1Sizes : ["M", "L", "XL"],
           colors: p1Colors.length ? p1Colors : ["Navy Blue", "Black"],
-          badge: "হট কালেকশন 🔥"
+          badge: "হট কালেকশন [Hot]"
         }
       ];
 
@@ -1270,7 +1270,7 @@
           price: p2Price,
           sizes: p2Sizes.length ? p2Sizes : ["M", "L", "XL"],
           colors: p2Colors.length ? p2Colors : ["Black", "White"],
-          badge: "নতুন পণ্য ✨"
+          badge: "নতুন পণ্য "
         });
       }
 
@@ -1304,7 +1304,7 @@
         const result = await res.json();
         if (result.success) {
           closeAddStoreModal();
-          showToast(`🎉 "${name}" সফলভাবে যুক্ত হয়েছে!`);
+          showToast(` "${name}" সফলভাবে যুক্ত হয়েছে!`);
           currentStoreId = result.store_id;
           await fetchStores();
           renderStoreView();

@@ -7,7 +7,7 @@ if "%PROJECT_DIR:~-1%"=="\" set "PROJECT_DIR=%PROJECT_DIR:~0,-1%"
 cd /d "%PROJECT_DIR%"
 
 echo ============================================================
-echo 🚀 LAUNCHING B2B AI SALES ENGINE & CLIENT DEMO SANDBOX
+echo [Launch] LAUNCHING B2B AI SALES ENGINE & CLIENT DEMO SANDBOX
 echo ============================================================
 echo [Be Smart With AI Agency Platform]
 echo.

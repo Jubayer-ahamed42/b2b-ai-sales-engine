@@ -146,7 +146,7 @@ class AISalesBrain:
 
         # Build conversation contents
         contents = []
-        for msg in history[-6:]:  # Keep last 6 turns for context
+        for msg in history[-6:]: # Keep last 6 turns for context
             role = "user" if msg.get("sender") == "user" else "model"
             contents.append({"role": role, "parts": [{"text": msg.get("text", "")}]})
 
@@ -243,8 +243,8 @@ class AISalesBrain:
             total = target_product.get("price", 950) + del_charge
 
             reply = (
-                f"🎉 অনেক অনেক ধন্যবাদ ভাইয়া! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।\n\n"
-                f"📋 [অর্ডার মেমো]\n"
+                f" অনেক অনেক ধন্যবাদ ভাইয়া! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।\n\n"
+                f"[List] [অর্ডার মেমো]\n"
                 f"• শপ: {store_name}\n"
                 f"• আইটেম: {target_product.get('name')}\n"
                 f"• মোবাইল: {detected_phone}\n"
@@ -252,8 +252,8 @@ class AISalesBrain:
                 f"• মূল্য: {target_product.get('price')}{currency}\n"
                 f"• ডেলিভারি চার্জ: {del_charge}{currency} ({'ঢাকার বাইরে' if is_outside else 'ঢাকা সিটি'})\n"
                 f"━━━━━━━━━━━━━━━━━━\n"
-                f"💰 সর্বমোট প্রদেয়: {total}{currency} (ক্যাশ অন ডেলিভারি)\n\n"
-                f"📦 আমাদের ডেলিভারি টিম দ্রুত পার্সেলটি প্যাক করে আপনার ঠিকানায় পাঠিয়ে দিচ্ছে। পণ্য হাতে পেয়ে চেক করে মূল্য পরিশোধ করবেন।"
+                f"[Price] সর্বমোট প্রদেয়: {total}{currency} (ক্যাশ অন ডেলিভারি)\n\n"
+                f"[Package] আমাদের ডেলিভারি টিম দ্রুত পার্সেলটি প্যাক করে আপনার ঠিকানায় পাঠিয়ে দিচ্ছে। পণ্য হাতে পেয়ে চেক করে মূল্য পরিশোধ করবেন।"
             )
 
             order_data = {
@@ -293,11 +293,11 @@ class AISalesBrain:
                 badge = f" ({p.get('badge')})" if p.get("badge") else ""
                 
                 reply = (
-                    f"জি ভাইয়া/আপু! আমাদের **{p.get('name')}**{badge} বর্তমানে স্টকে এভেইলেবল আছে। ✨\n\n"
-                    f"🔹 মূল্য: মাত্র {p.get('price')}{currency}\n"
-                    f"🔹 সাইজ: {sizes}\n"
-                    f"🔹 কালার: {colors}\n\n"
-                    f"🚚 ডেলিভারি চার্জ: ঢাকা সিটিতে {inside_dhaka}৳, ঢাকার বাইরে {outside_dhaka}৳ (১০০% ক্যাশ অন ডেলিভারি, অগ্রিম টাকা লাগবে না)।\n\n"
+                    f"জি ভাইয়া/আপু! আমাদের **{p.get('name')}**{badge} বর্তমানে স্টকে এভেইলেবল আছে। \n\n"
+                    f"- মূল্য: মাত্র {p.get('price')}{currency}\n"
+                    f"- সাইজ: {sizes}\n"
+                    f"- কালার: {colors}\n\n"
+                    f" ডেলিভারি চার্জ: ঢাকা সিটিতে {inside_dhaka}৳, ঢাকার বাইরে {outside_dhaka}৳ (১০০% ক্যাশ অন ডেলিভারি, অগ্রিম টাকা লাগবে না)।\n\n"
                     f"অর্ডারটি কনফার্ম করতে চাইলে আপনার:\n"
                     f"১. নাম\n"
                     f"২. মোবাইল নম্বর\n"
@@ -317,15 +317,15 @@ class AISalesBrain:
             for p in products:
                 badge = f" [{p.get('badge')}]" if p.get("badge") else ""
                 items_desc.append(
-                    f"🔹 **{p.get('name')}**{badge}\n"
-                    f"   মূল্য: {p.get('price')}{currency} | সাইজ: {', '.join(p.get('sizes', []))}"
+                    f"- **{p.get('name')}**{badge}\n"
+                    f" মূল্য: {p.get('price')}{currency} | সাইজ: {', '.join(p.get('sizes', []))}"
                 )
 
             reply = (
-                f"আসসালামু আলাইকুম! {store_name}-এ স্বাগতম। 🌿\n\n"
+                f"আসসালামু আলাইকুম! {store_name}-এ স্বাগতম। [Organic]\n\n"
                 f"আমাদের বর্তমান রানিং প্রিমিয়াম কালেকশন:\n\n"
                 + "\n\n".join(items_desc)
-                + f"\n\n🚚 ডেলিভারি চার্জ: ঢাকা সিটিতে {inside_dhaka}৳, ঢাকার বাইরে {outside_dhaka}৳ (ক্যাশ অন ডেলিভারি)।\n\n"
+                + f"\n\n ডেলিভারি চার্জ: ঢাকা সিটিতে {inside_dhaka}৳, ঢাকার বাইরে {outside_dhaka}৳ (ক্যাশ অন ডেলিভারি)।\n\n"
                 f"আপনি কোনটি নিতে চাচ্ছেন? পছন্দের পণ্যটির নাম লিখে জানালে অর্ডার কনফার্ম করে দিচ্ছি!"
             )
             return reply, None
@@ -337,7 +337,7 @@ class AISalesBrain:
             reply = (
                 f"জি ভাইয়া/আপু! আমাদের প্রতিটি পণ্যের সাশ্রয়ী মূল্যতালিকা:\n\n"
                 + "\n".join(items_desc)
-                + f"\n\n🚚 ডেলিভারি চার্জ: ঢাকা {inside_dhaka}৳ | ঢাকার বাইরে {outside_dhaka}৳\n"
+                + f"\n\n ডেলিভারি চার্জ: ঢাকা {inside_dhaka}৳ | ঢাকার বাইরে {outside_dhaka}৳\n"
                 f"কোনটি আপনার পছন্দ হয়েছে? অর্ডার করতে আপনার নাম, মোবাইল ও ঠিকানা পাঠিয়ে দিন।"
             )
             return reply, None
@@ -348,10 +348,10 @@ class AISalesBrain:
         ]
         if any(w in lower_msg for w in delivery_keywords):
             reply = (
-                f"জি ভাইয়া! আমরা সারা বাংলাদেশে দ্রুততম সময়ে ক্যাশ অন ডেলিভারি দিই। 🚚\n\n"
+                f"জি ভাইয়া! আমরা সারা বাংলাদেশে দ্রুততম সময়ে ক্যাশ অন ডেলিভারি দিই। \n\n"
                 f"• ঢাকা সিটিতে: মাত্র {inside_dhaka}৳ (২৪-৪৮ ঘণ্টার মধ্যে হোম ডেলিভারি)\n"
                 f"• ঢাকার বাইরে: মাত্র {outside_dhaka}৳ (২-৩ কার্যদিবসে)\n\n"
-                f"✨ সবচেয়ে বড় সুবিধা: অগ্রিম ১ টাকাও দিতে হবে না! ডেলিভারি ম্যানের সামনে পার্সেল দেখে তারপর টাকা পরিশোধ করবেন।\n\n"
+                f" সবচেয়ে বড় সুবিধা: অগ্রিম ১ টাকাও দিতে হবে না! ডেলিভারি ম্যানের সামনে পার্সেল দেখে তারপর টাকা পরিশোধ করবেন।\n\n"
                 f"অর্ডার কনফার্ম করতে আপনার পছন্দের পণ্যের নাম, ফোন নম্বর ও পূর্ণ ঠিকানা দিন।"
             )
             return reply, None
@@ -362,7 +362,7 @@ class AISalesBrain:
         ]
         if any(w in lower_msg for w in order_keywords):
             reply = (
-                f"অর্ডার কনফার্ম করার নিয়ম খুবই সহজ ভাইয়া! কোনো অগ্রিম পেমেন্ট লাগবে না। ✨\n\n"
+                f"অর্ডার কনফার্ম করার নিয়ম খুবই সহজ ভাইয়া! কোনো অগ্রিম পেমেন্ট লাগবে না। \n\n"
                 f"অনুগ্রহ করে মেসেজে আপনার:\n"
                 f"১. পছন্দের পণ্যের নাম ও সাইজ\n"
                 f"২. আপনার নাম\n"
@@ -377,7 +377,7 @@ class AISalesBrain:
         if any(w in lower_msg for w in greeting_keywords):
             top_items = ", ".join([p.get("name", "") for p in products[:2]])
             reply = (
-                f"ওয়ালাইকুম আসসালাম! {store_name}-এ আপনাকে স্বাগতম। ✨\n\n"
+                f"ওয়ালাইকুম আসসালাম! {store_name}-এ আপনাকে স্বাগতম। \n\n"
                 f"আমরা দিচ্ছি ১০০% কোয়ালিটি গ্যারান্টি সহ সেরা পণ্য ও সারা দেশে ক্যাশ অন ডেলিভারি সুবিধা।\n"
                 f"বর্তমানে আমাদের হট কালেকশনে রয়েছে: {top_items} সহ আকর্ষণীয় প্রিমিয়াম পণ্য।\n\n"
                 f"আজ আপনাকে কীভাবে সাহায্য করতে পারি? আমাদের পুরো কালেকশন দেখতে চাইলে 'কালেকশন' লিখুন অথবা নির্দিষ্ট পণ্যের নাম লিখে দাম জেনে নিন।"
@@ -387,9 +387,9 @@ class AISalesBrain:
         # 8. Default Store Overview Fallback
         top_items = "\n".join([f"• {p.get('name')} — মাত্র {p.get('price')}{currency}" for p in products[:3]])
         reply = (
-            f"আসসালামু আলাইকুম! {store_name}-এ আপনাকে স্বাগতম। ✨\n\n"
+            f"আসসালামু আলাইকুম! {store_name}-এ আপনাকে স্বাগতম। \n\n"
             f"আমাদের জনপ্রিয় কালেকশনসমূহ:\n{top_items}\n\n"
-            f"🚚 সারা দেশে ক্যাশ অন ডেলিভারি সুবিধা রয়েছে (ঢাকা {inside_dhaka}৳, ঢাকার বাইরে {outside_dhaka}৳)।\n\n"
+            f" সারা দেশে ক্যাশ অন ডেলিভারি সুবিধা রয়েছে (ঢাকা {inside_dhaka}৳, ঢাকার বাইরে {outside_dhaka}৳)।\n\n"
             f"আপনি কোনো নির্দিষ্ট পণ্য দেখতে চাচ্ছেন বা অর্ডার করতে চাচ্ছেন কি? জানালে এখনই সহায়তা করছি!"
         )
         return reply, None
@@ -416,9 +416,9 @@ class AISalesBrain:
             "address": order_info.get("address", ""),
             "items": order_info.get("items_text") or "প্রিমিয়াম প্রোডাক্ট",
             "total_amount": order_info.get("estimated_total") or 1000,
-            "status": "✅ কনফার্মড (অটোমেটেড)"
+            "status": "[OK] কনফার্মড (অটোমেটেড)"
         }
-        data["orders"].insert(0, order_record)  # Newest first
+        data["orders"].insert(0, order_record) # Newest first
 
         try:
             with open(ORDERS_FILE, "w", encoding="utf-8") as f:

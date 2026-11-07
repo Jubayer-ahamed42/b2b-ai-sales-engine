@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 B2B AI Sales Engine & Client Demo Sandbox
+# B2B AI Sales Engine & Client Demo Sandbox
 ### Real-Time Conversational AI Sales Brain & Omnichannel COD Checkout Simulator for Bangladeshi E-Commerce
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)](https://python.org)
@@ -14,7 +14,7 @@
 
 ---
 
-## 🌟 Overview & Strategic Value
+## Overview & Strategic Value
 
 In the Bangladeshi e-commerce landscape, over 35% of buying decisions and customer inquiries occur between 11:00 PM and 2:00 AM. Traditional SMEs and fashion brands lose thousands in revenue daily due to missed midnight leads and slow response times. Furthermore, business owners are hesitant to grant admin credentials or developer API keys to third-party consultants.
 
@@ -22,7 +22,7 @@ In the Bangladeshi e-commerce landscape, over 35% of buying decisions and custom
 
 ---
 
-## 🔥 Key Features
+## Key Features
 
 1. **Interactive Smartphone Sandbox (WhatsApp/Messenger UI)**:
    - Pixel-perfect mobile device simulator with instant conversational sales replies.
@@ -43,7 +43,7 @@ In the Bangladeshi e-commerce landscape, over 35% of buying decisions and custom
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart TD
@@ -65,7 +65,7 @@ flowchart TD
 
 ---
 
-## 🚀 Quickstart Guide
+## Quickstart Guide
 
 ### 1. Clone & Configure
 ```bash
@@ -85,43 +85,43 @@ The sandbox dashboard will automatically launch at `http://127.0.0.1:5050`.
 
 ---
 
-## 🎯 Client Outreach Playbook
+## Client Outreach Playbook
 
 For step-by-step agency blueprints, outreach templates, and 2-minute conversion scripts, refer to:
-👉 [**Client Outreach Playbook**](pitch_templates/OUTREACH_PLAYBOOK.md)
+-> [**Client Outreach Playbook**](pitch_templates/OUTREACH_PLAYBOOK.md)
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 ├── catalogs/
-│   └── stores.json            # Multi-tenant store product catalogs & policies
+│ └── stores.json # Multi-tenant store product catalogs & policies
 ├── core/
-│   ├── ai_sales_brain.py      # Conversational sales brain & address extraction
-│   └── catalog_manager.py     # Catalog parser & store switcher
+│ ├── ai_sales_brain.py # Conversational sales brain & address extraction
+│ └── catalog_manager.py # Catalog parser & store switcher
 ├── orders/
-│   └── orders.json            # Live simulated orders ledger
+│ └── orders.json # Live simulated orders ledger
 ├── pitch_templates/
-│   └── OUTREACH_PLAYBOOK.md   # Agency client acquisition blueprint & message templates
+│ └── OUTREACH_PLAYBOOK.md # Agency client acquisition blueprint & message templates
 ├── static/
-│   └── index.html             # Smartphone UI simulator & live CRM dashboard
-├── .env.example               # Safe environment variable configuration template
-├── .gitignore                 # Git ignore rules for secrets and caches
-├── README.md                  # Project documentation
-├── run_demo.bat               # Windows 1-click executable runner
-├── server.py                  # Zero-dependency Python server
-└── test_sales_engine.py       # Automated unit tests for order extraction
+│ └── index.html # Smartphone UI simulator & live CRM dashboard
+├── .env.example # Safe environment variable configuration template
+├── .gitignore # Git ignore rules for secrets and caches
+├── README.md # Project documentation
+├── run_demo.bat # Windows 1-click executable runner
+├── server.py # Zero-dependency Python server
+└── test_sales_engine.py # Automated unit tests for order extraction
 ```
 
 ---
 
-## 🛡️ License
+## License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
 <div align="center">
-Developed with ❤️ by <a href="https://github.com/Jubayer-ahamed42">Jubayer Ahamed</a> &middot; Empowering Bangladeshi E-Commerce with Autonomous AI
+Developed with by <a href="https://github.com/Jubayer-ahamed42">Jubayer Ahamed</a> &middot; Empowering Bangladeshi E-Commerce with Autonomous AI
 </div>

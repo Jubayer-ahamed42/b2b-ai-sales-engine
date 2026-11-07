@@ -52,7 +52,7 @@ class CatalogManager:
                 "name": s_data.get("name", s_id),
                 "category": s_data.get("category", ""),
                 "tagline": s_data.get("tagline", ""),
-                "avatar": s_data.get("avatar", "🛍️"),
+                "avatar": s_data.get("avatar", "[Shop]"),
                 "brand_color": s_data.get("brand_color", "#4f46e5"),
                 "product_count": len(s_data.get("products", []))
             })
